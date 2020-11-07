@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+    php-httpd:
+        image: php:7.3-apache
+        ports:
+            - 9090:80
+        volumes:
+            - "./src:/var/www/html"
