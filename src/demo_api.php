@@ -15,7 +15,7 @@ function response($response, $err = false, $result = array())
 }
 
 
-$samples_path = $_SERVER["DOCUMENT_ROOT"] . "/api/samples";
+$samples_path = $_SERVER["DOCUMENT_ROOT"] . "/samples";
 $output = shell_exec("alpr -c eu ${samples_path}/demo.jpg");
 //$output = shell_exec("alpr -c eu " . $target_dir);
 
@@ -42,4 +42,3 @@ foreach ($result as $r) {
     ));
 }
 response("Result Found", false, $arr);
-unlink($target_dir);

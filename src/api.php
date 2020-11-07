@@ -26,23 +26,23 @@ if (!isset($_FILES["uploadFile"])) {
 
 # detecting content of the file
 $uploadedFile = $_FILES["uploadFile"]["tmp_name"];
-$detectedType = exif_imagetype($uploadedFile);
 $name = md5(uniqid());
-switch ($detectedType) {
-    case IMAGETYPE_JPEG:
-        $name .= ".jpg";
-        break;
-    case IMAGETYPE_PNG:
-        $name .= ".png";
-        break;
-    default:
-        response("File Format Not Supported", true);
-        exit;
-}
+// $detectedType = exif_imagetype($uploadedFile);
+// switch ($detectedType) {
+//     case IMAGETYPE_JPEG:
+//         $name .= ".jpg";
+//         break;
+//     case IMAGETYPE_PNG:
+//         $name .= ".png";
+//         break;
+//     default:
+//         response("File Format Not Supported", true);
+//         exit;
+// }
 
 # move file to temporary location
-$target_dir = $_SERVER["CONTEXT_DOCUMENT_ROOT"] . "/api/uploads";
-$target_dir = $target_dir . "/" . $name;
+$target_dir = $_SERVER["CONTEXT_DOCUMENT_ROOT"] . "/uploads";
+$target_dir = $target_dir . "/" . $name . ".jpg";
 
 if (!move_uploaded_file($uploadedFile, $target_dir)) {
     response("Sorry, there was an error uploading your file", true);
@@ -55,6 +55,7 @@ if (!move_uploaded_file($uploadedFile, $target_dir)) {
 
 # processing
 $output = shell_exec("alpr -c eu " . $target_dir);
+echo $output;
 
 # parsing result
 $result = explode("-", $output);
