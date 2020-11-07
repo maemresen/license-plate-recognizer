@@ -1,9 +1,8 @@
 version: '3.7'
 
+
 services:
-    php-httpd:
-        image: php:7.3-apache
+    license_plate_recognizer:
+        build: .
         ports:
             - 9090:80
-        volumes:
-            - "./src:/var/www/html"
