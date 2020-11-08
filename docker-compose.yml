@@ -1,8 +1,7 @@
 version: '3.7'
 
-
 services:
-    license_plate_recognizer:
+    php-httpd:
         build: .
         ports:
             - 9090:80
