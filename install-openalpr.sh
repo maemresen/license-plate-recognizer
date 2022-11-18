@@ -38,8 +38,8 @@ apt install -y libtool m4 automake cmake pkg-config
 # install opencv
 apt install -y libopencv-dev
 
-# install liblog4cplus-dev, liblog4cplus-1.1-9 and build-essential:
-apt -y install liblog4cplus-1.1-9 liblog4cplus-dev build-essential
+# install liblog4cplus-dev and build-essential:
+apt -y install liblog4cplus-dev build-essential
 
 apt -y install wget
 
